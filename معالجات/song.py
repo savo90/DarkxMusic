@@ -23,11 +23,11 @@ from yt_dlp.utils import (
 
 @Client.on_message(filters.command("song") & ~filters.edited)
 async def song(client, message):
-    cap = "**ꜱᴏɴɢ ᴜᴘʟᴏᴀᴅᴇᴅ ʙʏ ꜱᴜᴍɪᴛ ʏᴀᴅᴀᴠ...**"
+    cap = "**اهلا بك عزيزي يتم التحميل م هنا ...**"
     url = message.text.split(None, 1)[1]
     rkp = await message.reply("**🎧...**")
     if not url:
-        await rkp.edit("**ᴘʟᴇᴀꜱᴇ ᴘʀᴏᴠɪᴅᴇ \n ꜱᴏɴɢ ɴᴀᴍᴇ...**")
+        await rkp.edit("**من فضلك اعطني اسم  \n الاغنـيه...**")
     search = SearchVideos(url, offset=1, mode="json", max_results=1)
     test = search.result()
     p = json.loads(test)
@@ -35,7 +35,7 @@ async def song(client, message):
     try:
         url = q[0]["link"]
     except BaseException:
-        return await rkp.edit("**❌ ꜱᴏɴɢ ɴᴏᴛ ꜰᴏᴜɴᴅ...**")
+        return await rkp.edit("**❌ لم يتم العثـور عليـها...**")
     type = "audio"
     if type == "audio":
         opts = {
@@ -93,10 +93,10 @@ async def song(client, message):
         return
     time.time()
     if song:
-        await rkp.edit("**📤 ᴜᴘʟᴏᴀᴅɪɴɢ ...**"),
+        await rkp.edit("**📤 جاري التحميـل ...**"),
         lol = "./etc/tg_vc_bot.jpg"
         lel = await message.reply_audio(
-                 f"{rip_data['id']}.mp3",
+                 f"{rip_data[ id ]}.mp3",
                  duration=int(rip_data["duration"]),
                  title=str(rip_data["title"]),
                  performer=str(rip_data["uploader"]),
